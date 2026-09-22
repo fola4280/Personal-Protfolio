@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farhan Tijani — I build things that matter.</title>
+  <meta name="description" content="Farhan Tijani — projects across technology, sustainability, engineering and creative making.">
+
+  <style>
+    :root {
+      --bg: #070707;
+      --surface: #111111;
+      --text: #f5f5f5;
+      --muted: #a6a6a6;
+      --accent: #b7ff00;
+      --border: #292929;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .skip {
+      position: absolute;
+      left: -9999px;
+    }
+
+    .skip:focus {
+      left: 1rem;
+      top: 1rem;
+      background: var(--accent);
+      color: #000;
+      padding: 0.7rem 1rem;
+      z-index: 10;
+    }
+
+    nav {
+      max-width: var(--max);
+      margin: auto;
+      padding: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .links a {
+      text-decoration: none;
+      color: var(--muted);
+    }
+
+    .links a:hover {
+      color: var(--accent);
+    }
+
+    .menu {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.5rem;
+    }
+
+    main {
+      max-width: var(--max);
+      margin: auto;
+      padding: 0 1.25rem;
+    }
+
+    .hero {
+      padding: 7rem 0 5rem;
+      max-width: 850px;
+    }
+
+    .eyebrow,
+    .section-label {
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 6.8rem);
+      line-height: 0.95;
+      margin: 1rem 0 1.5rem;
+      letter-spacing: -0.06em;
+    }
+
+    .lead {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: var(--muted);
+      max-width: 720px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .button {
+      padding: 0.8rem 1.1rem;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+
+    .signals {
+      border-block: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      padding: 1rem 0;
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+    }
+
+    section {
+      padding: 5rem 0;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin: 0.5rem 0 2rem;
+      letter-spacing: -0.04em;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      margin: 0.4rem 0;
+    }
+
+    .tag {
+      color: var(--accent);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .card p {
+      color: var(--muted);
+      max-width: 600px;
+    }
+
+    .card-link {
+      margin-top: auto;
+      color: var(--text);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .card-link:hover {
+      color: var(--accent);
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .about p,
+    .timeline p {
+      color: var(--muted);
+    }
+
+    .timeline {
+      border-top: 1px solid var(--border);
+    }
+
+    .item {
+      border-bottom: 1px solid var(--border);
+      padding: 1.2rem 0;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 1rem;
+    }
+
+    .item strong {
+      color: var(--accent);
+    }
+
+    .cta {
+      background: var(--accent);
+      color: #000;
+      padding: 2.5rem;
+    }
+
+    .cta h2 {
+      margin: 0 0 1rem;
+    }
+
+    .cta a {
+      font-weight: 800;
+    }
+
+    .profile-wrap {
+      margin-top: 3rem;
+      max-width: 900px;
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 1rem;
+    }
+
+    .photo {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
+      object-fit: cover;
+    }
+
+    .photo figcaption {
+      padding: 0.75rem 1rem;
+      color: var(--muted);
+      font-size: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .photo figcaption a {
+      color: var(--muted);
+    }
+
+    .project-photo {
+      margin: -1.5rem -1.5rem 1.5rem;
+      height: 190px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+
+    .album {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .album .photo {
+      min-height: 260px;
+    }
+
+    .album .photo img {
+      min-height: 230px;
+    }
+
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .role {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      padding: 1.5rem;
+    }
+
+    .role .tag {
+      margin-bottom: 0.6rem;
+    }
+
+    .role h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .role p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    footer {
+      max-width: var(--max);
+      margin: auto;
+      padding: 2rem 1.25rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    @media (max-width: 700px) {
+      .links {
+        display: none;
+      }
+
+      .menu {
+        display: block;
+      }
+
+      .grid,
+      .about,
+      .profile-wrap,
+      .album,
+      .role-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .item {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 4rem;
+      }
+
+  
+    .album {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .album .photo {
+      min-height: 260px;
+    }
+
+    .album .photo img {
+      min-height: 230px;
+    }
+
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .role {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      padding: 1.5rem;
+    }
+
+    .role .tag {
+      margin-bottom: 0.6rem;
+    }
+
+    .role h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .role p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    footer {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#work">Skip to content</a>
+
+  <nav>
+    <a class="logo" href="#">FARHAN.</a>
+
+    <div class="links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#journey">Journey</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#album">Album</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <button class="menu" aria-label="Open menu">
+      Menu
+    </button>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="eyebrow">
+        Technology · Sustainability · Engineering · Creativity
+      </div>
+
+      <h1>I build things that matter.</h1>
+
+      <p class="lead">
+        I'm Farhan, a student and maker building projects that connect
+        technology with real-world problems, from sustainable fashion to
+        multimodal AI.
+      </p>
+
+      <div class="buttons">
+        <a class="button primary" href="#work">See my work ↓</a>
+        <a
+          class="button"
+          href="https://github.com/fola4280"
+          target="_blank"
+          rel="noopener"
+        >
+          GitHub ↗
+        </a>
+        <a
+          class="button"
+          href="https://ie.linkedin.com/in/farhan-tijani-2938a8415"
+          target="_blank"
+          rel="noopener"
+        >
+          LinkedIn ↗
+        </a>
+      </div>
+
+      <div class="profile-wrap">
+        <figure class="photo">
+          <img
+            src="https://media.re-turn.ie/wp-content/uploads/FP001016-3197-1.jpg"
+            alt="Farhan Tijani receiving the Re-turn Award at the 2026 Stripe Young Scientist and Technology Exhibition"
+          >
+          <figcaption>
+            Receiving the Re-turn Award at Stripe YSTE 2026.
+            Photo credit: Fennells / Re-turn.
+            <a href="https://re-turn.ie/cork-student-wins-re-turn-award-for-environmental-innovation/" target="_blank" rel="noopener">Source ↗</a>
+          </figcaption>
+        </figure>
+      </div>
+    </header>
+
+    <div class="signals">
+      <span>BUILD</span>
+      <span>LEARN</span>
+      <span>TEST</span>
+      <span>ITERATE</span>
+    </div>
+
+    <section id="work">
+      <div class="section-label">Selected work</div>
+      <h2>Things I've actually built.</h2>
+
+      <div class="grid">
+
+        <article class="card">
+          <div class="tag">Research + Build · AI / Sensory Technology</div>
+
+          <h3>Multimodal Memory System</h3>
+
+          <p>
+            A multimodal AI project exploring how sight, sound and familiar
+            scents could support memory and familiarity for people with
+            Alzheimer's.
+          </p>
+
+          <a
+            class="card-link"
+            href="https://github.com/fola4280/Multimodal-Memory-System"
+            target="_blank"
+            rel="noopener"
+          >
+            View project ↗
+          </a>
+        </article>
+
+        <article class="card">
+          <div class="project-photo">
+            <img
+              src="https://media.re-turn.ie/wp-content/uploads/FP001016-3197-1.jpg"
+              alt="Farhan Tijani receiving the Re-turn Award for ReThread"
+            >
+          </div>
+
+          <div class="tag">Sustainability · Product</div>
+
+          <h3>ReThread</h3>
+
+          <p>
+            An ethical-fashion platform focused on making sustainable choices
+            more accessible and actionable.
+          </p>
+
+          <a
+            class="card-link"
+            href="https://fola4280.github.io/ReThread/"
+            target="_blank"
+            rel="noopener"
+          >
+            View live project ↗
+          </a>
+        </article>
+
+        <article class="card">
+          <div class="tag">Web App · Learning</div>
+
+          <h3>SkillUp</h3>
+
+          <p>
+            A skill-building app for tracking practice, progress, streaks,
+            focus areas and personal milestones.
+          </p>
+
+          <a
+            class="card-link"
+            href="https://skill-up-5afa3386.base44.app"
+            target="_blank"
+            rel="noopener"
+          >
+            View live project ↗
+          </a>
+        </article>
+
+        <article class="card">
+          <div class="tag">Creative Technology · Web App</div>
+
+          <h3>Style Loop</h3>
+
+          <p>
+            A creative web app exploring digital fashion, styling and
+            practical ways to interact with clothing ideas online.
+          </p>
+
+          <a
+            class="card-link"
+            href="https://foamy-revive-style-loop.base44.app"
+            target="_blank"
+            rel="noopener"
+          >
+            View live project ↗
+          </a>
+        </article>
+
+        <article class="card">
+          <div class="tag">Creative Making · Fashion</div>
+
+          <h3>Fashion &amp; Upcycling</h3>
+
+          <p>
+            Hands-on work combining sewing, crochet and upcycling to turn
+            existing materials into new pieces.
+          </p>
+
+          <a class="card-link" href="#contact">
+            More coming soon ↗
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="about">
+        <div>
+          <div class="section-label">About</div>
+          <h2>Curious by default.</h2>
+          <p style="color: var(--muted); margin-top: -1rem;">
+            Student · Maker · Youth communicator · Writer
+          </p>
+        </div>
+
+        <div>
+          <p>
+            I'm a student, maker and youth communicator from Cork, Ireland.
+            I like learning by making, with my work moving between coding,
+            technology, engineering, sustainability, writing and creative
+            design.
+          </p>
+
+          <p>
+            A lot of my projects start with a real-world problem. I build,
+            test and rethink ideas rather than leaving them as ideas, from
+            ReThread and SkillUp to my multimodal memory project.
+          </p>
+
+          <p>
+            Alongside building things, I care about sharing ideas and creating
+            opportunities for other young people. That has led me into
+            student voice, communications, STEM, sustainability and public
+            speaking.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="leadership">
+      <div class="section-label">Beyond the project</div>
+      <h2>Beyond the Project</h2>
+      <p style="color: var(--muted); max-width: 720px;">
+        I don't just build projects. I get involved in the communities around them,
+        through student voice, technology, sustainability and youth leadership.
+      </p>
+
+      <div class="role-grid">
+        <article class="role">
+          <div class="tag">Student Voice · Communications</div>
+          <h3>ISSU Communications Officer</h3>
+          <p>
+            Working with the Irish Second-Level Students' Union on communications
+            ideas and opportunities for students, including the Student Journalism Network.
+          </p>
+        </article>
+
+        <article class="role">
+          <div class="tag">Technology · Leadership</div>
+          <h3>Technovation Student Ambassador</h3>
+          <p>
+            Supported and recruited participants during the 2025–2026 season,
+            helping students explore problems, build technology solutions and develop their ideas.
+          </p>
+        </article>
+
+        <article class="role">
+          <div class="tag">Technology · Peer Leadership</div>
+          <h3>Technovation Student Club Leader</h3>
+          <p>
+            Started and led a Technovation club at school, bringing opportunities
+            to learn technology skills to other students.
+          </p>
+        </article>
+
+        <article class="role">
+          <div class="tag">Environment · Youth Voice</div>
+          <h3>Eco-UNESCO</h3>
+          <p>
+            Two-time YEA semi-finalist and member of the Eco-UNESCO Youth Advisory
+            Panel, contributing to youth-led environmental work.
+          </p>
+        </article>
+      </div>
+
+      <div class="signal" style="margin-top: 2rem;">
+        <span>YOUNG SCIENTIST</span>
+        <span>YOUTH LEADERSHIP</span>
+        <span>SUSTAINABILITY</span>
+        <span>TECHNOLOGY</span>
+        <span>CREATIVITY</span>
+      </div>
+    </section>
+
+    <section id="journey">
+      <div class="section-label">Journey</div>
+
+      <h2>Still learning. Still building.</h2>
+
+      <div class="timeline">
+        <div class="item">
+          <strong>2026</strong>
+
+          <div>
+            <b>Young Scientist</b>
+            <p>
+              Developing ReThread and a multimodal AI memory-assist project
+              through research, prototyping and testing.
+            </p>
+          </div>
+        </div>
+
+        <div class="item">
+          <strong>2026–27</strong>
+
+          <div>
+            <b>Student voice &amp; communications</b>
+            <p>
+              Developing communications and journalism ideas through youth
+              leadership, while continuing to work on projects and opportunities
+              for students.
+            </p>
+          </div>
+        </div>
+
+        <div class="item">
+          <strong>Ongoing</strong>
+
+          <div>
+            <b>Building, writing &amp; learning</b>
+            <p>
+              Exploring coding, AI, sustainability, engineering and creative
+              work while sharing ideas through writing, media and public
+              communication.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="media">
+      <div class="section-label">Media &amp; writing</div>
+      <h2>Beyond the projects.</h2>
+
+      <div class="grid">
+        <article class="card">
+          <div class="tag">Documentary · Virgin Media</div>
+          <h3>My Ireland Too</h3>
+          <p>
+            Featured in the documentary series <i>My Ireland Too</i>, sharing
+            my perspective and experiences as a young person in Ireland.
+          </p>
+          <a
+            class="card-link"
+            href="https://www.virginmediatelevision.ie/"
+            target="_blank"
+            rel="noopener"
+          >
+            Watch / explore ↗
+          </a>
+        </article>
+
+        <article class="card">
+          <div class="tag">Writing · Poetry</div>
+          <h3>Substack</h3>
+          <p>
+            Poetry and reflections exploring ideas, experiences, memory and
+            identity.
+          </p>
+          <a
+            class="card-link"
+            href="https://substack.com/@farhantijani"
+            target="_blank"
+            rel="noopener"
+          >
+            Read my writing ↗
+          </a>
+        </article>
+
+        <article class="card">
+          <div class="tag">Radio · 2026</div>
+          <h3>Radio Kerry</h3>
+          <p>
+            Featured in a Radio Kerry feature connected with Millstreet
+            Community School, released on 30 August 2026.
+          </p>
+          <a class="card-link" href="#media">
+            Feature details ↗
+          </a>
+        </article>
+
+        <article class="card">
+          <div class="tag">Radio · 2026</div>
+          <h3>Cork Radio</h3>
+          <p>
+            Radio appearances discussing projects, Young Scientist work and
+            youth initiatives.
+          </p>
+          <a
+            class="card-link"
+            href="https://www.96fm.ie/"
+            target="_blank"
+            rel="noopener"
+          >
+            Explore 96FM ↗
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section id="album">
+      <div class="section-label">Photo album</div>
+      <h2>People, projects &amp; moments.</h2>
+      <p style="color: var(--muted); max-width: 720px;">
+        A visual record of the people, places and moments around my projects,
+        youth leadership, technology and learning.
+      </p>
+
+      <div class="album">
+        <figure class="photo">
+          <img src="portfolio-assets/youth-group.jpg" alt="Youth leadership & community">
+          <figcaption>
+            <strong>Youth leadership & community</strong><br>
+            Connecting with other young people through youth programmes and opportunities.
+          </figcaption>
+        </figure>
+        <figure class="photo">
+          <img src="portfolio-assets/project-presentation.jpg" alt="Project presentation">
+          <figcaption>
+            <strong>Project presentation</strong><br>
+            Sharing a project and learning through making, presenting and getting feedback.
+          </figcaption>
+        </figure>
+        <figure class="photo">
+          <img src="portfolio-assets/youth-network.jpg" alt="Youth network">
+          <figcaption>
+            <strong>Youth network</strong><br>
+            Meeting other young people through programmes, events and shared projects.
+          </figcaption>
+        </figure>
+        <figure class="photo">
+          <img src="portfolio-assets/coding-workshop.jpg" alt="Coding & collaboration">
+          <figcaption>
+            <strong>Coding & collaboration</strong><br>
+            Working alongside other students on technology and creative problem-solving.
+          </figcaption>
+        </figure>
+        <figure class="photo">
+          <img src="portfolio-assets/youth-event.jpg" alt="Youth event">
+          <figcaption>
+            <strong>Youth event</strong><br>
+            A moment from a wider youth development programme.
+          </figcaption>
+        </figure>
+        <figure class="photo">
+          <img src="portfolio-assets/team-event.jpg" alt="Team & community">
+          <figcaption>
+            <strong>Team & community</strong><br>
+            The people and experiences around the projects are part of the journey too.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="cta">
+        <div class="section-label">Let's connect</div>
+
+        <h2>Want to see what I'm building next?</h2>
+
+        <div class="buttons">
+          <a
+            class="button"
+            href="https://github.com/fola4280"
+            target="_blank"
+            rel="noopener"
+          >
+            GitHub ↗
+          </a>
+
+          <a
+            class="button"
+            href="https://ie.linkedin.com/in/farhan-tijani-2938a8415"
+            target="_blank"
+            rel="noopener"
+          >
+            LinkedIn ↗
+          </a>
+
+          <a
+            class="button"
+            href="https://substack.com/@farhantijani"
+            target="_blank"
+            rel="noopener"
+          >
+            Substack ↗
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Farhan Tijani</span>
+    <span>Built with HTML, CSS &amp; JavaScript</span>
+  </footer>
+</body>
+</html>
